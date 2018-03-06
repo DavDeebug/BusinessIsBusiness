@@ -83,7 +83,8 @@
 
                         <div class="commonFields">
 
-                            <button type="submit" class="btn btn-default">Calcola</button>
+
+                            <!--OBSOLETO! AGGIORNO I VALORI CON KEY UP<button type="button" class="btn btn-default">Calcola</button>-->
                             <!--Il click calcola i valori e li piazza nella seconda parte di modal-->
                             <!--La seconda parte contiene i controlli QtaTotale, PrezzoUnitario e PrezzoFinale-->
                             <!--L'Ok deve aggiornare il preventivo e (disabilitare i controlli della prima parte?)-->
@@ -139,16 +140,18 @@
     </div>
 
     <script src="scripts/catalogue.js"></script>
+    <script src="scripts/Calculations.js"></script>
     <script type="text/javascript">
         var productType = "";
         var selectedCatalogue;
         var selectedItem;
 
         $(document).ready(function () {
+            var currentProduct;
             HideSpecificFields();
             PopulateDropDown();
 
-            $(".dropdown-menu").find("a").click(function () {
+            $(".dropdown-menu").find("a").click(function (event) {
                 HideSpecificFields();
                 productType = $(this).attr("class");
 
@@ -163,6 +166,24 @@
                         $("#prova").find("#pezzo").show();
                         break;
                 }
+
+                // se faccessi qui i calcoli?
+                // i valori di molti parametri sono 0
+                // ad esempio, stabilito che unitPrice = 5, quantity sarà 0 perché non ho ancora modificato niente
+                // ne consegue che totalQuantity = 0 :(
+
+                currentProduct = $(this); // questo è il LINK cliccato, spero
+
+                SetUnitPrice(currentProduct);
+                
+            })
+
+            $(".specific").find("input:text").keyup( function () {
+                CalculateQuotation(currentProduct);
+            })
+
+            $("#discount").keyup(function () {
+                CalculateQuotation(currentProduct);
             })
         })
 

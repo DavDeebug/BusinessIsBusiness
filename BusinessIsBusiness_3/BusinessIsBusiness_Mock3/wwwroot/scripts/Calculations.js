@@ -1,11 +1,20 @@
-﻿function CalculateQuotation(product) {
-    //var productType // la classe dell'elemento selezionato 
+﻿function SetUnitPrice(product) {
+    var unitPrice = $(product).attr("unitPrice");
     //var unitPrice = SelectedItem.unitPrice;
-    var discountValue = $("#discount").val();
+    $("#unitPrice").val(unitPrice);
+}
+
+function CalculateQuotation(product) {
+    var productType = $(product).attr("class");
+    //var productType // la classe dell'elemento selezionato 
+
+    var unitPrice = $(product).attr("unitPrice");
+    var discountPercentage = $("#discount").val(); // così ho la percentuale
+    //var discountValue = 
 
     var totalQuantity = GetTotalQuantity(productType);
     var totalPrice = GetTotalPrice(unitPrice, totalQuantity);
-    var quotationPrice = GetQuotationPrice(totalPrice, discountValue);
+    var quotationPrice = GetQuotationPrice(totalPrice, discountPercentage);
 
     
 }
@@ -24,19 +33,19 @@ function GetTotalQuantity(productType) {
             break;
     }
     $("#totalQuantity").val(totalQuantity);
-    return totalQuantity;
+    return +totalQuantity;
 }
 
 function GetTotalPrice(price, quantity) {
     var tp = price * quantity;
     $("#totalPrice").val(tp);
-    return tp;
+    return +tp;
 }
 
-function GetQuotationPrice(total, discount) {
-    var fp = total - discount;
+function GetQuotationPrice(total, discountPercentage) {
+    var fp = total - (total * discountPercentage / 100);
     $("#finalPrice").val(fp);
-    return fp;
+    return +fp;
 }
 
 function getVolumeValue() {
@@ -47,8 +56,8 @@ function getVolumeValue() {
 }
 
 function getAreaValue() {
-    var l = $("areaLength").val();
-    var h = $("areaHeight").val();
+    var l = $("#areaLength").val();
+    var h = $("#areaHeight").val();
     return l * h;
 }
 

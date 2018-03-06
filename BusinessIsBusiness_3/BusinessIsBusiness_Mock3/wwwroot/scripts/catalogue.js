@@ -5,8 +5,8 @@
     { ProductName: "Prova4", UnitPrice: 4 }
 ]
 var areaProducts = [
-    { ProductName: "Prova5", UnitPrice: 7 },
-    { ProductName: "Prova6", UnitPrice: 7 },
+    { ProductName: "Prova5", UnitPrice: 8 },
+    { ProductName: "Prova6", UnitPrice: 9 },
     { ProductName: "Prova7", UnitPrice: 3 }
 ]
 
@@ -44,8 +44,9 @@ function PopulateDropDown() {
                 .attr('href', '#')
                 // provo ad aggiungere un id
                 .attr('id', (catalogueProducts[i].Name + "Item" + num))
-
-                //.attr('prezzo_unitario', (catalogueProducts[i].Data[num].UnitPrice))
+                // provo ad assegnare al link direttamente il prezzo unitario
+                // leggendolo dall'array js
+                .attr('unitPrice',(catalogueProducts[i].Data[num].UnitPrice))
                 .text(catalogueProducts[i].Data[num].ProductName)
                 .appendTo(li);
         })
