@@ -44,6 +44,8 @@ function PopulateDropDown() {
                 .attr('href', '#')
                 // provo ad aggiungere un id
                 .attr('id', (catalogueProducts[i].Name + "Item" + num))
+
+                //.attr('prezzo_unitario', (catalogueProducts[i].Data[num].UnitPrice))
                 .text(catalogueProducts[i].Data[num].ProductName)
                 .appendTo(li);
         })

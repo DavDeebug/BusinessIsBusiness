@@ -12535,7 +12535,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Davide Corrain\\.nuget\\packages\\": {},
+    "C:\\Users\\triprog-20\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12544,17 +12544,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Davide Corrain\\Desktop\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
+      "projectUniqueName": "C:\\Users\\triprog-20\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
       "projectName": "BusinessIsBusiness_Mock3",
-      "projectPath": "C:\\Users\\Davide Corrain\\Desktop\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
-      "packagesPath": "C:\\Users\\Davide Corrain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Davide Corrain\\Desktop\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\obj\\",
+      "projectPath": "C:\\Users\\triprog-20\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
+      "packagesPath": "C:\\Users\\triprog-20\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\triprog-20\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Davide Corrain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\triprog-20\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
