@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <title>Index</title>
     <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/style.css" rel="stylesheet" />
     <script src="scripts/jquery-3.3.1.js"></script>
     <script src="scripts/bootstrap.js"></script>
 </head>
 <body>
     <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
-    <!--TODO: sistemare -->
+    <!--TODO: sistemare righe e colonne allineate dentro il form -->
+    <!--TODO: gestire i casi NaN-->
 
     <h1>Titolone</h1>
 
@@ -24,17 +26,11 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
+                        <!--Viene popolato da uno scipt che scrive ciclicamente qualcosa di simile:-->
                         <!--<li class="dropdown-header">Raggruppamento per area</li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto1</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto2</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Raggruppamento per volume</li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto3</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto4</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto5</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Raggruppamento per pezzo</li>
-                        <li><a href="#" data-toggle="modal" data-target="#prova" class="pezzo">Prodotto6</a></li>-->
+                            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto1</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto2</a></li>
+                            <li class="divider"></li>                        -->
                     </ul>
                 </div>
             </div>
@@ -46,9 +42,9 @@
                         <tr>
                             <th>Nome prodotto</th>
                             <th>Quantità</th>
-                            <th>Lordo</th>
-                            <th>Sconto %</th>
-                            <th>Netto</th>
+                            <th>Lordo <span class="small">(&euro;)</span></th>
+                            <th>Sconto <span class="small">(%)</span></th>
+                            <th colspan="2">Netto <span class="small">(&euro;)</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +56,7 @@
                             <td>_prezzoL</td>
                             <td>_sconto</td>
                             <td>_prezzoN</td>
+                            <td>_forButtonGroup</td>
                         </tr>
                     </tbody>
                 </table>
@@ -82,7 +79,6 @@
                 <div class="modal-body">
                     <!--Provo ad inserire una o più form in questa sezione di codice-->
                     <form class="form-inline">
-
 
                         <div class="specific" id="volume">
                             <div class="form-group">
@@ -119,16 +115,10 @@
                             </div>
                         </div>
 
-
-
                         <div class="commonFields">
 
-
-                            <!--OBSOLETO! AGGIORNO I VALORI CON KEY UP <button type="button" class="btn btn-default">Calcola</button>-->
-                            <!--Il click calcola i valori e li piazza nella seconda parte di modal-->
                             <!--La seconda parte contiene i controlli QtaTotale, PrezzoUnitario e PrezzoFinale-->
                             <!--L'Ok deve aggiornare il preventivo -->
-
 
                             <hr />
                             <!--hr funge da separatore-->
@@ -157,16 +147,12 @@
                                 </select>-->
                                 <input type="number" class="form-control" name="discount" id="discount"
                                        min="0" max="100" placeholder="%discount" />
-
                             </div>
 
                             <div class="form-group">
                                 <label>Prezzo finale &euro;</label>
                                 <input type="text" class="form-control" name="finalPrice" id="finalPrice" placeholder="prezzo_f" readonly />
                             </div>
-
-
-
                         </div>
                     </form>
                 </div>
