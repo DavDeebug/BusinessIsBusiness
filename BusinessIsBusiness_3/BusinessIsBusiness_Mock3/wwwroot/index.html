@@ -8,30 +8,70 @@
     <script src="scripts/bootstrap.js"></script>
 </head>
 <body>
+    <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
+    <!--TODO: sistemare -->
+
     <h1>Titolone</h1>
 
-    <!--<div class="container">-->
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            Visualizza catalogo
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <!--<li class="dropdown-header">Raggruppamento per area</li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto1</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto2</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Raggruppamento per volume</li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto3</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto4</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto5</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Raggruppamento per pezzo</li>
-            <li><a href="#" data-toggle="modal" data-target="#prova" class="pezzo">Prodotto6</a></li>-->
-        </ul>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Prodotti, clienti e dropdown
+                <!--Almeno il pulsante va a destra-->
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        +
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <!--<li class="dropdown-header">Raggruppamento per area</li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto1</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto2</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Raggruppamento per volume</li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto3</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto4</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="volume">Prodotto5</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Raggruppamento per pezzo</li>
+                        <li><a href="#" data-toggle="modal" data-target="#prova" class="pezzo">Prodotto6</a></li>-->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <!--Qua metto la tabella-->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nome prodotto</th>
+                            <th>Quantità</th>
+                            <th>Lordo</th>
+                            <th>Sconto %</th>
+                            <th>Netto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--Vuoto all'inizio, si riempie premendo "OK" sul modal-->
+                        <!---->
+                        <tr>
+                            <td>_prodotto1</td>
+                            <td>_quantità</td>
+                            <td>_prezzoL</td>
+                            <td>_sconto</td>
+                            <td>_prezzoN</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-footer">
+                Qua metto il totale
+            </div>
+        </div>
     </div>
-    <!--</div>-->
-    <!--Realizzo il modal da agganciare al 7° link-->
+
+    <!--Realizzo il modal (finestra di dialogo)-->
     <div class="modal fade" id="prova">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -84,15 +124,14 @@
                         <div class="commonFields">
 
 
-                            <!--OBSOLETO! AGGIORNO I VALORI CON KEY UP<button type="button" class="btn btn-default">Calcola</button>-->
+                            <!--OBSOLETO! AGGIORNO I VALORI CON KEY UP <button type="button" class="btn btn-default">Calcola</button>-->
                             <!--Il click calcola i valori e li piazza nella seconda parte di modal-->
                             <!--La seconda parte contiene i controlli QtaTotale, PrezzoUnitario e PrezzoFinale-->
-                            <!--L'Ok deve aggiornare il preventivo e (disabilitare i controlli della prima parte?)-->
+                            <!--L'Ok deve aggiornare il preventivo -->
 
 
                             <hr />
                             <!--hr funge da separatore-->
-                            <!--TODO: sistemare con il discorso righe e colonne-->
                             <!--Creo la seconda parte (comune) del form. Per ora nello stesso form-->
                             <!--In seguito potrei spezzarlo in due form diversi-->
                             <div class="form-group">
@@ -100,11 +139,11 @@
                                 <input type="text" class="form-control" name="totalQuantity" id="totalQuantity" placeholder="total_q" readonly />
                             </div>
                             <div class="form-group">
-                                <label>Prezzo unitario</label>
+                                <label>Prezzo unitario &euro;</label>
                                 <input type="text" class="form-control" name="unitPrice" id="unitPrice" placeholder="prezzo_u" readonly />
                             </div>
                             <div class="form-group">
-                                <label>Prezzo totale</label>
+                                <label>Prezzo totale &euro;</label>
                                 <input type="text" class="form-control" name="totalPrice" id="totalPrice" placeholder="prezzo_t" readonly />
                             </div>
                             <div class="form-group">
@@ -116,13 +155,13 @@
                                     <option>20%</option>
                                     <option>40%</option>
                                 </select>-->
-                                 <input type="number" class="form-control" name="discount" id="discount"
-                                        min="0" max="100" placeholder="%discount" />
+                                <input type="number" class="form-control" name="discount" id="discount"
+                                       min="0" max="100" placeholder="%discount" />
 
                             </div>
 
                             <div class="form-group">
-                                <label>Prezzo finale</label>
+                                <label>Prezzo finale &euro;</label>
                                 <input type="text" class="form-control" name="finalPrice" id="finalPrice" placeholder="prezzo_f" readonly />
                             </div>
 
@@ -175,10 +214,10 @@
                 currentProduct = $(this); // questo è il LINK cliccato, spero
 
                 SetUnitPrice(currentProduct);
-                
+
             })
 
-            $(".specific").find("input:text").keyup( function () {
+            $(".specific").find("input:text").keyup(function () {
                 CalculateQuotation(currentProduct);
             })
 
