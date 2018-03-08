@@ -1,19 +1,28 @@
-﻿var volumeProducts = [
-    { ProductName: "Prova1", UnitPrice: 7 },
-    { ProductName: "Prova2", UnitPrice: 5 },
-    { ProductName: "Prova3", UnitPrice: 2 },
-    { ProductName: "Prova4", UnitPrice: 4 }
+﻿function Product(name, price) {
+    this.ProductName = name;
+    this.UnitPrice = price;
+
+    return this;
+}
+
+
+var volumeProducts = [
+    new Product("Prodotto1", 7),
+    new Product("Prodotto2", 5),
+    new Product("Prodotto3", 2),
+    new Product("Prodotto4", 4)
 ]
+
 var areaProducts = [
-    { ProductName: "Prova5", UnitPrice: 8 },
-    { ProductName: "Prova6", UnitPrice: 9 },
-    { ProductName: "Prova7", UnitPrice: 3 }
+    new Product("Prodotto5", 8),
+    new Product("Prodotto6", 9),
+    new Product("Prodotto7", 3)
 ]
 
 var quantityProducts = [
-    { ProductName: "Prova8", UnitPrice: 18 },
-    { ProductName: "Prova9", UnitPrice: 10 },
-    { ProductName: "Prova0", UnitPrice: 1 }
+    new Product("Prodotto8", 18),
+    new Product("Prodotto9", 10),
+    new Product("Prodotto0", 1)
 ]
 
 

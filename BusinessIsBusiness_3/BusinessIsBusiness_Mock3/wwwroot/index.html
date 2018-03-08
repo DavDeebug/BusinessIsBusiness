@@ -11,7 +11,7 @@
 <body>
     <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
     <!--TODO: sistemare righe e colonne allineate dentro il form -->
-    <!--TODO: gestire i casi NaN-->
+    <!--TODO: gestire i casi NaN o impostare tutti input a type number-->
 
     <h1>Titolone</h1>
 
@@ -21,8 +21,8 @@
                 Prodotti, clienti e dropdown
                 <!--Almeno il pulsante va a destra-->
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                        +
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -41,6 +41,7 @@
                     <thead>
                         <tr>
                             <th>Nome prodotto</th>
+                            <th>Unitario <span class="small">(&euro;)</span></th>
                             <th>Quantità</th>
                             <th>Lordo <span class="small">(&euro;)</span></th>
                             <th>Sconto <span class="small">(%)</span></th>
@@ -52,6 +53,7 @@
                         <!---->
                         <tr>
                             <td>_prodotto1</td>
+                            <td>_unitario</td>
                             <td>_quantità</td>
                             <td>_prezzoL</td>
                             <td>_sconto</td>
@@ -165,15 +167,16 @@
     </div>
 
     <!--ButtonGroup-->
-    <div class="btn-group btn-group-sm">
-        <button type="button" class="btn btn-default">Up</button>
-        <button type="button" class="btn btn-default">Down</button>
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
+    <!--Racchiudere le classi Icon tra span-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
-
     <script src="scripts/catalogue.js"></script>
     <script src="scripts/Calculations.js"></script>
+    <script src="scripts/quotation.js"></script>
     <script type="text/javascript">
         var productType = "";
         var selectedCatalogue;
@@ -200,16 +203,14 @@
                         break;
                 }
 
-                // se faccessi qui i calcoli?
-                // i valori di molti parametri sono 0
-                // ad esempio, stabilito che unitPrice = 5, quantity sarà 0 perché non ho ancora modificato niente
-                // ne consegue che totalQuantity = 0 :(
 
                 currentProduct = $(this); // questo è il LINK cliccato, spero
 
                 SetUnitPrice(currentProduct);
 
             })
+
+            // posso raggruppare i selettori input:number
 
             $(".specific").find("input:text").keyup(function () {
                 CalculateQuotation(currentProduct);
