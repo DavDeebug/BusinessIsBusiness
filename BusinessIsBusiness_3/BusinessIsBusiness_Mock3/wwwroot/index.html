@@ -21,8 +21,8 @@
                 Prodotti, clienti e dropdown
                 <!--Almeno il pulsante va a destra-->
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                        +
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -165,13 +165,13 @@
     </div>
 
     <!--ButtonGroup-->
-    <div class="btn-group btn-group-sm">
-        <button type="button" class="btn btn-default">Up</button>
-        <button type="button" class="btn btn-default">Down</button>
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
+    <!--Racchiudere le classi Icon tra span-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
-
     <script src="scripts/catalogue.js"></script>
     <script src="scripts/Calculations.js"></script>
     <script type="text/javascript">
