@@ -35,7 +35,7 @@ function AddToQuotation(customizedProduct) {
 
     var inputQuantity = $("#totalQuantity").val();
     var inputTotalPrice = $("#totalPrice").val();
-    var inputDiscountPercentage = $("#discount").val();
+    var inputDiscountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val();
     var inputFinalPrice = $("#finalPrice").val();
 
     var newItem = new Record(name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);

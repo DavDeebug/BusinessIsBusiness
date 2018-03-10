@@ -9,7 +9,7 @@ function CalculateQuotation(product) {
     //var productType // la classe dell'elemento selezionato 
 
     var unitPrice = $(product).attr("unitPrice");
-    var discountPercentage = $("#discount").val(); // così ho la percentuale
+    var discountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val(); // così ho la percentuale
 
     var totalQuantity = GetTotalQuantity(productType);
     var totalPrice = GetTotalPrice(unitPrice, totalQuantity);

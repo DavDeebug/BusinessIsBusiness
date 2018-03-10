@@ -86,15 +86,15 @@
                         <div class="specific" id="volume">
                             <div class="form-group">
                                 <label>Lunghezza</label>
-                                <input type="text" class="form-control" name="volumeLength" id="volumeLength" placeholder="length" required />
+                                <input type="number" class="form-control" name="volumeLength" id="volumeLength" placeholder="length" required />
                             </div>
                             <div class="form-group">
                                 <label>Altezza</label>
-                                <input type="text" class="form-control" name="volumeHeight" id="volumeHeight" placeholder="height" required />
+                                <input type="number" class="form-control" name="volumeHeight" id="volumeHeight" placeholder="height" required />
                             </div>
                             <div class="form-group">
                                 <label>Profondità</label>
-                                <input type="text" class="form-control" name="volumeWidth" id="volumeWidth" placeholder="width" required />
+                                <input type="number" class="form-control" name="volumeWidth" id="volumeWidth" placeholder="width" required />
                             </div>
                         </div>
 
@@ -102,11 +102,11 @@
                         <div class="specific" id="area">
                             <div class="form-group">
                                 <label>Lunghezza</label>
-                                <input type="text" class="form-control" name="areaLength" id="areaLength" placeholder="length" required />
+                                <input type="number" class="form-control" name="areaLength" id="areaLength" placeholder="length" required />
                             </div>
                             <div class="form-group">
                                 <label>Altezza</label>
-                                <input type="text" class="form-control" name="areaHeight" id="areaHeight" placeholder="height" required />
+                                <input type="number" class="form-control" name="areaHeight" id="areaHeight" placeholder="height" required />
                             </div>
                         </div>
 
@@ -114,7 +114,7 @@
                         <div class="specific" id="pezzo">
                             <div class="form-group">
                                 <label>Unità</label>
-                                <input type="text" class="form-control" name="unitQuantity" id="quantity" placeholder="quantity" required />
+                                <input type="number" class="form-control" name="unitQuantity" id="quantity" placeholder="quantity" required />
                             </div>
                         </div>
 
@@ -129,15 +129,15 @@
                             <!--In seguito potrei spezzarlo in due form diversi-->
                             <div class="form-group">
                                 <label>Quantità totale</label>
-                                <input type="text" class="form-control" name="totalQuantity" id="totalQuantity" placeholder="total_q" readonly />
+                                <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" placeholder="total_q" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Prezzo unitario &euro;</label>
-                                <input type="text" class="form-control" name="unitPrice" id="unitPrice" placeholder="prezzo_u" readonly />
+                                <input type="number" class="form-control" name="unitPrice" id="unitPrice" placeholder="prezzo_u" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Prezzo totale &euro;</label>
-                                <input type="text" class="form-control" name="totalPrice" id="totalPrice" placeholder="prezzo_t" readonly />
+                                <input type="number" class="form-control" name="totalPrice" id="totalPrice" placeholder="prezzo_t" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Sconto(%)</label>
@@ -149,12 +149,12 @@
                                     <option>40%</option>
                                 </select>-->
                                 <input type="number" class="form-control" name="discount" id="discount"
-                                       min="0" max="100" placeholder="%discount" />
+                                       min="0" max="100" placeholder="%discount" value="" />
                             </div>
 
                             <div class="form-group">
                                 <label>Prezzo finale &euro;</label>
-                                <input type="text" class="form-control" name="finalPrice" id="finalPrice" placeholder="prezzo_f" readonly />
+                                <input type="number" class="form-control" name="finalPrice" id="finalPrice" placeholder="prezzo_f" readonly />
                             </div>
                         </div>
                     </form>
@@ -212,25 +212,31 @@
                 SetUnitPrice(currentProduct);
 
                 linkedProduct = $(this).prop('linkedProduct');
-
-                $("#add").click(function (event) {
-                    var addedItem = AddToQuotation(linkedProduct);
-                    AddRow(addedItem);
-                })
-
             })
 
+            $("#add").click(function (event) {
+                var addedItem = AddToQuotation(linkedProduct);
+                AddRow(addedItem);
+            })
 
 
             // posso raggruppare i selettori input:number
 
-            $(".specific").find("input:text").keyup(function () {
+            //$(".specific").find("input:number").keyup(function () {
+            //    CalculateQuotation(currentProduct);
+            //})
+
+            $(":input").on('keyup mouseup', function () {
                 CalculateQuotation(currentProduct);
             })
 
-            $("#discount").keyup(function () {
-                CalculateQuotation(currentProduct);
+            $('#prova').on('hidden.bs.modal', function () {
+                $(":input").val("");
             })
+
+            //$("#discount").keyup(function () {
+            //    CalculateQuotation(currentProduct);
+            //})
         })
 
         function HideSpecificFields() {
