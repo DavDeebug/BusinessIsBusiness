@@ -12,6 +12,7 @@
     <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
     <!--TODO: sistemare righe e colonne allineate dentro il form -->
     <!--TODO: gestire i casi NaN o impostare tutti input a type number-->
+    <!--TODO: modificare l'evento keyUp, i number non modificano i calcoli se premo le freccette-->
 
     <h1>Titolone</h1>
 
@@ -160,7 +161,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-default disabled" data-dismiss="modal">Ok</button>
+                    <button id="add" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
                 </div>
             </div>
         </div>
@@ -184,6 +185,7 @@
 
         $(document).ready(function () {
             var currentProduct;
+            var linkedProduct; // ho aggiunto una prop di collegamento all'elemento dell'array [VEDI CATALOGUE.JS]
             HideSpecificFields();
             PopulateDropDown();
 
@@ -206,9 +208,19 @@
 
                 currentProduct = $(this); // questo è il LINK cliccato, spero
 
+                // se il collegamento funziona, posso ricavarlo in altro modo e dunque togliere questa istruzione
                 SetUnitPrice(currentProduct);
 
+                linkedProduct = $(this).prop('linkedProduct');
+
+                $("#add").click(function (event) {
+                    var addedItem = AddToQuotation(linkedProduct);
+                    AddRow(addedItem);
+                })
+
             })
+
+
 
             // posso raggruppare i selettori input:number
 
@@ -224,6 +236,8 @@
         function HideSpecificFields() {
             $("#prova").find(".specific").hide();
         }
+
+
 
 
     </script>

@@ -1,9 +1,23 @@
-﻿function Product(name, price) {
+﻿//function Product(name, price) {
+//    this.ProductName = name;
+//    this.UnitPrice = price;
+
+//    return this;
+//}
+
+function Product(name, price) {
     this.ProductName = name;
     this.UnitPrice = price;
-
-    return this;
 }
+
+Product.prototype.getProductName = function () {
+    return this.ProductName;
+};
+
+Product.prototype.getUnitPrice = function () {
+    return this.UnitPrice;
+};
+
 
 
 var volumeProducts = [
@@ -55,7 +69,9 @@ function PopulateDropDown() {
                 .attr('id', (catalogueProducts[i].Name + "Item" + num))
                 // provo ad assegnare al link direttamente il prezzo unitario
                 // leggendolo dall'array js
-                .attr('unitPrice',(catalogueProducts[i].Data[num].UnitPrice))
+                .attr('unitPrice', (catalogueProducts[i].Data[num].UnitPrice))
+                // provo ad aggiungere direttamente il riferimento al prodotto in array
+                .prop('linkedProduct', (catalogueProducts[i].Data[num]))
                 .text(catalogueProducts[i].Data[num].ProductName)
                 .appendTo(li);
         })
