@@ -1,6 +1,7 @@
 ﻿// Il body della table preventivo è un array js
 
 var quotationItems = [];
+var counter = 0;
 
 // ogni elemento verrà inserito in un td
 // i td grafici sono la rappresentazione di un oggetto 'record'
@@ -8,10 +9,10 @@ var quotationItems = [];
 //function Record(qty, tp, discount, fp) {
 //    // il name lo ricava dal prototype
 //    // lo unit price lo ricava dal prototype
-    //this.quantity = qty;
-    //this.totalPrice = tp;
-    //this.discountPercentage = discount;
-    //this.finalPrice = fp;
+//this.quantity = qty;
+//this.totalPrice = tp;
+//this.discountPercentage = discount;
+//this.finalPrice = fp;
 //    return this;
 //}
 
@@ -41,9 +42,38 @@ function AddToQuotation(customizedProduct) {
     var newItem = new Record(name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
     quotationItems.push(newItem);
     console.log('ho creato un nuovo record');
-    return newItem;
-}
 
+    //return newItem;
+
+    //counter++;
+    var content = $("tbody");
+
+    var row = $("<tr></tr>")
+        .addClass('quotation-row')
+        .attr('id', `rec${counter++}`)
+        .attr('position', 0)
+        .appendTo(content);
+
+    var definitions = row
+        .html(`<td>${name}</td>
+               <td>${price}</td>
+               <td>${inputQuantity}</td>
+               <td>${inputTotalPrice}</td>
+               <td>${inputDiscountPercentage}</td>
+               <td>${inputFinalPrice}</td>
+               <td>
+                <div class="btn-group" id="groups">
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+               </td>`)
+        .appendTo(row);
+
+    //$("#groups").hide();
+
+}
 
 function AddRow(item) {
     var content = $("tbody");
@@ -57,4 +87,5 @@ function AddRow(item) {
             .appendTo(row);
     });
 
+    //mi aggiunge colonne in più
 };

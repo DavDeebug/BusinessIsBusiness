@@ -11,8 +11,6 @@
 <body>
     <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
     <!--TODO: sistemare righe e colonne allineate dentro il form -->
-    <!--TODO: gestire i casi NaN o impostare tutti input a type number-->
-    <!--TODO: modificare l'evento keyUp, i number non modificano i calcoli se premo le freccette-->
 
     <h1>Titolone</h1>
 
@@ -38,7 +36,7 @@
 
             <div class="panel-body">
                 <!--Qua metto la tabella-->
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="quotation">
                     <thead>
                         <tr>
                             <th>Nome prodotto</th>
@@ -66,7 +64,7 @@
             </div>
 
             <div class="panel-footer">
-                Qua metto il totale
+                Qua metto il totale: <span class="text-right">A destra</span>
             </div>
         </div>
     </div>
@@ -85,43 +83,40 @@
 
                         <div class="specific" id="volume">
                             <div class="form-group">
-                                <label>Lunghezza</label>
-                                <input type="number" class="form-control" name="volumeLength" id="volumeLength" placeholder="length" required />
+                                <label class="control-label">Lunghezza</label>
+                                <input type="number" min="0" class="form-control" name="volumeLength" id="volumeLength" required />
                             </div>
                             <div class="form-group">
-                                <label>Altezza</label>
-                                <input type="number" class="form-control" name="volumeHeight" id="volumeHeight" placeholder="height" required />
+                                <label class="control-label">Altezza</label>
+                                <input type="number" min="0" class="form-control" name="volumeHeight" id="volumeHeight" required />
                             </div>
                             <div class="form-group">
-                                <label>Profondità</label>
-                                <input type="number" class="form-control" name="volumeWidth" id="volumeWidth" placeholder="width" required />
+                                <label class="control-label">Profondità</label>
+                                <input type="number" min="0" class="form-control" name="volumeWidth" id="volumeWidth" required />
                             </div>
                         </div>
 
                         <!--Area-->
                         <div class="specific" id="area">
                             <div class="form-group">
-                                <label>Lunghezza</label>
-                                <input type="number" class="form-control" name="areaLength" id="areaLength" placeholder="length" required />
+                                <label class="control-label">Lunghezza</label>
+                                <input type="number" class="form-control" name="areaLength" id="areaLength" required />
                             </div>
                             <div class="form-group">
-                                <label>Altezza</label>
-                                <input type="number" class="form-control" name="areaHeight" id="areaHeight" placeholder="height" required />
+                                <label class="control-label">Altezza</label>
+                                <input type="number" min="0" class="form-control" name="areaHeight" id="areaHeight" required />
                             </div>
                         </div>
 
                         <!--Pezzo-->
                         <div class="specific" id="pezzo">
                             <div class="form-group">
-                                <label>Unità</label>
-                                <input type="number" class="form-control" name="unitQuantity" id="quantity" placeholder="quantity" required />
+                                <label class="control-label">Unità</label>
+                                <input type="number" min="0" class="form-control" name="unitQuantity" id="quantity" required />
                             </div>
                         </div>
 
                         <div class="commonFields">
-
-                            <!--La seconda parte contiene i controlli QtaTotale, PrezzoUnitario e PrezzoFinale-->
-                            <!--L'Ok deve aggiornare il preventivo -->
 
                             <hr />
                             <!--hr funge da separatore-->
@@ -129,27 +124,20 @@
                             <!--In seguito potrei spezzarlo in due form diversi-->
                             <div class="form-group">
                                 <label>Quantità totale</label>
-                                <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" placeholder="total_q" readonly />
+                                <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Prezzo unitario &euro;</label>
-                                <input type="number" class="form-control" name="unitPrice" id="unitPrice" placeholder="prezzo_u" readonly />
+                                <input type="number" class="form-control" name="unitPrice" id="unitPrice" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Prezzo totale &euro;</label>
-                                <input type="number" class="form-control" name="totalPrice" id="totalPrice" placeholder="prezzo_t" readonly />
+                                <input type="number" class="form-control" name="totalPrice" id="totalPrice" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Sconto(%)</label>
-                                <!--<select class="form-control" name="discount" id="discount" placeholder="sconto%">
-                                    <option>Nessuno</option>
-                                    <option>5%</option>
-                                    <option>10%</option>
-                                    <option>20%</option>
-                                    <option>40%</option>
-                                </select>-->
                                 <input type="number" class="form-control" name="discount" id="discount"
-                                       min="0" max="100" placeholder="%discount" value="" />
+                                       min="0" max="100" value="" />
                             </div>
 
                             <div class="form-group">
@@ -169,12 +157,14 @@
 
     <!--ButtonGroup-->
     <!--Racchiudere le classi Icon tra span-->
-    <div class="btn-group">
+    <div class="btn-group" id="groups">
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
+
+
     <script src="scripts/catalogue.js"></script>
     <script src="scripts/Calculations.js"></script>
     <script src="scripts/quotation.js"></script>
@@ -216,11 +206,9 @@
 
             $("#add").click(function (event) {
                 var addedItem = AddToQuotation(linkedProduct);
-                AddRow(addedItem);
+                //AddRow(addedItem);
             })
 
-
-            // posso raggruppare i selettori input:number
 
             //$(".specific").find("input:number").keyup(function () {
             //    CalculateQuotation(currentProduct);
@@ -237,12 +225,20 @@
             //$("#discount").keyup(function () {
             //    CalculateQuotation(currentProduct);
             //})
+
+
+
+            // DA RIVEDERE
+            $('.quotation-row').hover(function () {
+                $('#groups').show();
+            }, function () {
+                    $('#groups').hide();
+                })
         })
 
         function HideSpecificFields() {
             $("#prova").find(".specific").hide();
         }
-
 
 
 
