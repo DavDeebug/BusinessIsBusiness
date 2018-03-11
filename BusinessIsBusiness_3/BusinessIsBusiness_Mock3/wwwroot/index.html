@@ -50,7 +50,7 @@
                     <tbody>
                         <!--Vuoto all'inizio, si riempie premendo "OK" sul modal-->
                         <!---->
-                        <tr>
+                        <!--<tr>
                             <td>_prodotto1</td>
                             <td>_unitario</td>
                             <td>_quantità</td>
@@ -58,7 +58,7 @@
                             <td>_sconto</td>
                             <td>_prezzoN</td>
                             <td>_forButtonGroup</td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -176,6 +176,8 @@
         $(document).ready(function () {
             var currentProduct;
             var linkedProduct; // ho aggiunto una prop di collegamento all'elemento dell'array [VEDI CATALOGUE.JS]
+
+            var currentRow;
             HideSpecificFields();
             PopulateDropDown();
 
@@ -203,6 +205,46 @@
 
                 linkedProduct = $(this).prop('linkedProduct');
             })
+
+            $(".btn-group").find(".up").click(function (event) {
+                //console.log("up!");
+                //alert("Hai cliccato SU");
+                currentRow = $(this).parents("tr");
+
+                //$("tr").eq(0)
+
+                if (currentRow === $("tr:first") ) {
+                    alert("Non è possibile spostare la prima riga");
+                    return;
+                } else {
+                    // sposta
+                }
+            })
+
+            $(".btn-group").find(".down").click(function (event) {
+                //alert("Hai cliccato GIU");
+                currentRow = $(this).parents("tr");
+                if (currentRow === $("tr:last")) {
+                    alert("Non è possibile spostare l'ultima riga");
+                    return;
+                } else {
+                    // sposta
+                }
+
+            })
+
+            $(".btn-group").find(".edit").click(function (event) {
+                // logica del modifica
+                currentRow = $(this).parents("tr");
+
+            })
+
+            $(".btn-group").find(".remove").click(function (event) {
+                // logica del rimuovi
+                currentRow = $(this).parents("tr");
+
+            })
+
 
             $("#add").click(function (event) {
                 var addedItem = AddToQuotation(linkedProduct);

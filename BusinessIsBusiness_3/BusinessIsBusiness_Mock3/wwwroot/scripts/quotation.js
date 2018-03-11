@@ -41,7 +41,7 @@ function AddToQuotation(customizedProduct) {
 
     var newItem = new Record(name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
     quotationItems.push(newItem);
-    console.log('ho creato un nuovo record');
+    //console.log('ho creato un nuovo record');
 
     //return newItem;
 
@@ -63,13 +63,16 @@ function AddToQuotation(customizedProduct) {
                <td>${inputFinalPrice}</td>
                <td>
                 <div class="btn-group" id="groups">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button type="button" class="btn btn-default up"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+                    <button type="button" class="btn btn-default down"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+                    <button type="button" class="btn btn-default edit"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-default remove"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
                </td>`)
         .appendTo(row);
+
+    var x = $("tbody  tr");
+    console.log("Ho creato un nuovo record, ora ne ho" + x.length);
 
     //$("#groups").hide();
 
