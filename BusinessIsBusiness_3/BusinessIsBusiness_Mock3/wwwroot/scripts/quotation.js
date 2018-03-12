@@ -19,8 +19,9 @@ var counter = 0;
 // catena di delegazione
 //Record.prototype.__proto__ = Product.prototype;
 
-function Record(name, up, qty, tp, discount, fp) {
+function Record(id, name, up, qty, tp, discount, fp) {
     Product.call(this, name, up);
+    this.id = id;
     this.quantity = qty;
     this.totalPrice = tp;
     this.discountPercentage = discount;
@@ -31,6 +32,7 @@ Record.prototype = Object.create(Product.prototype);
 
 function AddToQuotation(customizedProduct) {
 
+    var recordId = 'rec' + counter++;
     var name = customizedProduct.getProductName();
     var price = customizedProduct.getUnitPrice();
 
@@ -39,23 +41,25 @@ function AddToQuotation(customizedProduct) {
     var inputDiscountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val();
     var inputFinalPrice = $("#finalPrice").val();
 
-    var newItem = new Record(name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
+    var newItem = new Record(recordId, name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
     quotationItems.push(newItem);
     //console.log('ho creato un nuovo record');
 
     //return newItem;
 
     //counter++;
-    var content = $("tbody");
+    CreateGraphicRow();
 
-    var row = $("<tr></tr>")
-        .addClass('quotation-row')
-        .attr('id', `rec${counter++}`)
-        .attr('position', 0)
-        .appendTo(content);
+    function CreateGraphicRow() {
+        var content = $("tbody");
 
-    var definitions = row
-        .html(`<td>${name}</td>
+        var row = $("<tr></tr>")
+            .addClass('quotation-row')
+            .attr('id', `${recordId}`)
+            .appendTo(content);
+
+        var definitions = row
+            .html(`<td>${name}</td>
                <td>${price}</td>
                <td>${inputQuantity}</td>
                <td>${inputTotalPrice}</td>
@@ -69,26 +73,91 @@ function AddToQuotation(customizedProduct) {
                     <button type="button" class="btn btn-default remove"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
                </td>`)
-        .appendTo(row);
+            .appendTo(row);
+}
 
-    var x = $("tbody  tr");
-    console.log("Ho creato un nuovo record, ora ne ho" + x.length);
 
-    //$("#groups").hide();
+    $("tbody").find("tr:last .up").click(function (event) {
+        var currentRow = $(this).closest("tr");
+        var firstRowId = $(this).parents("tbody").find('tr:first').attr('id');
+
+        if (currentRow.attr("id") === firstRowId){
+            alert("Non è possibile spostare più in alto la prima riga!")
+        } else {
+            MoveUpRow(currentRow);
+        }
+    });
+    $("tbody").find("tr:last .down").click(function (event) {
+        var currentRow = $(this).closest("tr");
+        var lastRowId = $(this).parents("tbody").find('tr:last').attr('id');
+
+        if (currentRow.attr("id") === lastRowId) {
+            alert("Non è possibile spostare più in basso l'ultima riga!")
+        } else {
+            MoveDownRow(currentRow);
+        }
+    });
+
+
+
+    $(".edit").click(function (event) {
+        currentRow = $(this).closest("tr");
+
+    });
+
+    $("tbody").find("tr:last .remove").click(function (event) {
+        var currentRow = $(this).closest("tr");
+        var itemIndex = quotationItems.map(function (x) { return x.id }).indexOf(currentRow.attr('id'));
+
+        if (itemIndex > -1) {
+            quotationItems.splice(itemIndex, 1);
+        }
+
+        currentRow.remove();
+    });
+
+    function MoveUpRow(row) {
+        var $elem1 = $(row),
+            $elem2 = $(row.prev()),
+            $placeholder = $("<tr><td></td></tr>");
+        $elem2.after($placeholder);
+
+        $elem1.after($elem2);
+        $placeholder.replaceWith($elem1);
+    }
+
+    function MoveDownRow(row) {
+        var $elem1 = $(row),
+            $elem2 = $(row.next()),
+            $placeholder = $("<tr><td></td></tr>");
+        $elem1.after($placeholder);
+
+        $elem2.after($elem1);
+        $placeholder.replaceWith($elem2);
+    }
+
 
 }
 
-function AddRow(item) {
-    var content = $("tbody");
+    //// DA RIMUOVERE
+    //var x = $("tbody  tr");
+    //console.log("Ho creato un nuovo record, ora ne ho" + x.length);
 
-    var row = $("<tr/>")
-        .appendTo(content);
+    //$("#groups").hide();
 
-    $.each(item, function (i) {
-        var definition = $("<td/>")
-            .text(item[i])
-            .appendTo(row);
-    });
 
-    //mi aggiunge colonne in più
-};
+
+//function AddRow(item) {
+//    var content = $("tbody");
+
+//    var row = $("<tr/>")
+//        .appendTo(content);
+
+//    $.each(item, function (i) {
+//        var definition = $("<td/>")
+//            .text(item[i])
+//            .appendTo(row);
+//    });
+
+//    //mi aggiunge colonne in più
+//};
