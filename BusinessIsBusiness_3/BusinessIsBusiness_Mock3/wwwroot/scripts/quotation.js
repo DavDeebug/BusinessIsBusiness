@@ -1,23 +1,6 @@
-﻿// Il body della table preventivo è un array js
-
-var quotationItems = [];
+﻿var quotationItems = [];
 var counter = 0;
 
-// ogni elemento verrà inserito in un td
-// i td grafici sono la rappresentazione di un oggetto 'record'
-
-//function Record(qty, tp, discount, fp) {
-//    // il name lo ricava dal prototype
-//    // lo unit price lo ricava dal prototype
-//this.quantity = qty;
-//this.totalPrice = tp;
-//this.discountPercentage = discount;
-//this.finalPrice = fp;
-//    return this;
-//}
-
-// catena di delegazione
-//Record.prototype.__proto__ = Product.prototype;
 
 function Record(id, name, up, qty, tp, discount, fp) {
     Product.call(this, name, up);
@@ -43,11 +26,6 @@ function AddToQuotation(customizedProduct) {
 
     var newItem = new Record(recordId, name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
     quotationItems.push(newItem);
-    //console.log('ho creato un nuovo record');
-
-    //return newItem;
-
-    //counter++;
     CreateGraphicRow();
 
     function CreateGraphicRow() {
@@ -102,6 +80,7 @@ function AddToQuotation(customizedProduct) {
 
     $(".edit").click(function (event) {
         currentRow = $(this).closest("tr");
+        // TODO
 
     });
 
@@ -117,34 +96,31 @@ function AddToQuotation(customizedProduct) {
     });
 
     function MoveUpRow(row) {
-        var $elem1 = $(row),
-            $elem2 = $(row.prev()),
-            $placeholder = $("<tr><td></td></tr>");
-        $elem2.after($placeholder);
+        var current = $(row),
+            previous = $(row.prev()),
+            placeholder = $("<tr><td></td></tr>");
+        previous.after(placeholder);
 
-        $elem1.after($elem2);
-        $placeholder.replaceWith($elem1);
+        current.after(previous);
+        placeholder.replaceWith(current);
     }
 
     function MoveDownRow(row) {
-        var $elem1 = $(row),
-            $elem2 = $(row.next()),
-            $placeholder = $("<tr><td></td></tr>");
-        $elem1.after($placeholder);
+        var current = $(row),
+            next = $(row.next()),
+            placeholder = $("<tr><td></td></tr>");
+        current.after(placeholder);
 
-        $elem2.after($elem1);
-        $placeholder.replaceWith($elem2);
+        next.after(current);
+        placeholder.replaceWith(next);
     }
 
 
 }
 
-    //// DA RIMUOVERE
-    //var x = $("tbody  tr");
-    //console.log("Ho creato un nuovo record, ora ne ho" + x.length);
-
-    //$("#groups").hide();
-
+// per ricavare le proprietà e "disegnare" la riga del preventivo
+// avrei iterato sul mio oggetto 'record' nel seguente modo:
+// però mi aggiungeva delle colonne in più:
 
 
 //function AddRow(item) {
@@ -158,6 +134,4 @@ function AddToQuotation(customizedProduct) {
 //            .text(item[i])
 //            .appendTo(row);
 //    });
-
-//    //mi aggiunge colonne in più
 //};

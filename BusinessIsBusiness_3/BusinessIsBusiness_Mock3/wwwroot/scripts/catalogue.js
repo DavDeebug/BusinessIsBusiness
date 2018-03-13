@@ -1,11 +1,4 @@
-﻿//function Product(name, price) {
-//    this.ProductName = name;
-//    this.UnitPrice = price;
-
-//    return this;
-//}
-
-function Product(name, price) {
+﻿function Product(name, price) {
     this.ProductName = name;
     this.UnitPrice = price;
 }
@@ -19,26 +12,24 @@ Product.prototype.getUnitPrice = function () {
 };
 
 
-
 var volumeProducts = [
-    new Product("Prodotto1", 7),
-    new Product("Prodotto2", 5),
-    new Product("Prodotto3", 2),
-    new Product("Prodotto4", 4)
+    new Product("Sabbia lavata", 0.0279),
+    new Product("Sabbia asciutta", 0.0408),
+    new Product("Miscela di ghiaia",0.0287),
+    new Product("Misto cementato", 0.0391)
 ]
 
 var areaProducts = [
-    new Product("Prodotto5", 8),
-    new Product("Prodotto6", 9),
-    new Product("Prodotto7", 3)
+    new Product("Pavimento Corallo in PVC 0.8mm", 4.30),
+    new Product("Pavimento Corallo in PVC 2.0mm", 9.60),
+    new Product("Mosaico Pasta di Vetro", 36.80)
 ]
 
 var quantityProducts = [
-    new Product("Prodotto8", 18),
-    new Product("Prodotto9", 10),
-    new Product("Prodotto0", 1)
+    new Product("Piastrella in PVC", 3.70),
+    new Product("Colla al Quarzo formato 5kg", 4.90),
+    new Product("Mosaico Foglia", 18.50)
 ]
-
 
 
 var catalogueProducts = [
@@ -46,7 +37,8 @@ var catalogueProducts = [
     { Name: "area", Data: areaProducts },
     { Name: "pezzo", Data: quantityProducts }]
 
-// popoliamo il dropdown
+
+
 function PopulateDropDown() {
 
 

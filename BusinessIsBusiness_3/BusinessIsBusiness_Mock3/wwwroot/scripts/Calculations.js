@@ -1,15 +1,13 @@
 ﻿function SetUnitPrice(product) {
     var unitPrice = $(product).attr("unitPrice");
-    //var unitPrice = SelectedItem.unitPrice;
     $("#unitPrice").val(unitPrice);
 }
 
 function CalculateQuotation(product) {
     var productType = $(product).attr("class");
-    //var productType // la classe dell'elemento selezionato 
 
     var unitPrice = $(product).attr("unitPrice");
-    var discountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val(); // così ho la percentuale
+    var discountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val();
 
     var totalQuantity = GetTotalQuantity(productType);
     var totalPrice = GetTotalPrice(unitPrice, totalQuantity);

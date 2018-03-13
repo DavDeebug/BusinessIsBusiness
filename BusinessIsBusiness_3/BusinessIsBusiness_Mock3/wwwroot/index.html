@@ -9,33 +9,29 @@
     <script src="scripts/bootstrap.js"></script>
 </head>
 <body>
+    <!--TODO: implementare la funzionalità di modifica record-->
     <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
     <!--TODO: sistemare righe e colonne allineate dentro il form -->
 
-    <h1>Titolone</h1>
+    <h1>Busine$$ is Busine$$</h1>
 
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Prodotti, clienti e dropdown
-                <!--Almeno il pulsante va a destra-->
                 <div class="dropdown">
                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         <span class="caret"></span>
                     </button>
+
                     <ul class="dropdown-menu">
-                        <!--Viene popolato da uno scipt che scrive ciclicamente qualcosa di simile:-->
-                        <!--<li class="dropdown-header">Raggruppamento per area</li>
-                            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto1</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#prova" class="area">Prodotto2</a></li>
-                            <li class="divider"></li>-->
+                        <!--Viene popolato dallo script catalogue.js-->
                     </ul>
                 </div>
             </div>
 
             <div class="panel-body">
-                <!--Qua metto la tabella-->
                 <table class="table table-bordered" id="quotation">
                     <thead>
                         <tr>
@@ -49,16 +45,6 @@
                     </thead>
                     <tbody>
                         <!--Vuoto all'inizio, si riempie premendo "OK" sul modal-->
-                        <!---->
-                        <!--<tr>
-                            <td>_prodotto1</td>
-                            <td>_unitario</td>
-                            <td>_quantità</td>
-                            <td>_prezzoL</td>
-                            <td>_sconto</td>
-                            <td>_prezzoN</td>
-                            <td>_forButtonGroup</td>
-                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -78,20 +64,22 @@
                     <h2 class="modal-title">Inserisci informazioni sul prodotto</h2>
                 </div>
                 <div class="modal-body">
-                    <!--Provo ad inserire una o più form in questa sezione di codice-->
+                    <!--Inserisco una form per la gestione degli input-->
+
                     <form class="form-inline">
 
+                        <!--Volume-->
                         <div class="specific" id="volume">
                             <div class="form-group">
-                                <label class="control-label">Lunghezza</label>
+                                <label class="control-label">Lunghezza (metri)</label>
                                 <input type="number" min="0" class="form-control" name="volumeLength" id="volumeLength" required />
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Altezza</label>
+                                <label class="control-label">Altezza (metri)</label>
                                 <input type="number" min="0" class="form-control" name="volumeHeight" id="volumeHeight" required />
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Profondità</label>
+                                <label class="control-label">Profondità (metri)</label>
                                 <input type="number" min="0" class="form-control" name="volumeWidth" id="volumeWidth" required />
                             </div>
                         </div>
@@ -99,11 +87,11 @@
                         <!--Area-->
                         <div class="specific" id="area">
                             <div class="form-group">
-                                <label class="control-label">Lunghezza</label>
+                                <label class="control-label">Lunghezza (metri)</label>
                                 <input type="number" class="form-control" name="areaLength" id="areaLength" required />
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Altezza</label>
+                                <label class="control-label">Altezza (metri)</label>
                                 <input type="number" min="0" class="form-control" name="areaHeight" id="areaHeight" required />
                             </div>
                         </div>
@@ -116,12 +104,9 @@
                             </div>
                         </div>
 
+                        <!--Campi calcolati comuni-->
                         <div class="commonFields">
-
                             <hr />
-                            <!--hr funge da separatore-->
-                            <!--Creo la seconda parte (comune) del form. Per ora nello stesso form-->
-                            <!--In seguito potrei spezzarlo in due form diversi-->
                             <div class="form-group">
                                 <label>Quantità totale</label>
                                 <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" readonly />
@@ -139,10 +124,9 @@
                                 <input type="number" class="form-control" name="discount" id="discount"
                                        min="0" max="100" value="" />
                             </div>
-
                             <div class="form-group">
                                 <label>Prezzo finale &euro;</label>
-                                <input type="number" class="form-control" name="finalPrice" id="finalPrice" placeholder="prezzo_f" readonly />
+                                <input type="number" class="form-control" name="finalPrice" id="finalPrice" readonly />
                             </div>
                         </div>
                     </form>
@@ -155,15 +139,7 @@
         </div>
     </div>
 
-    <!--ButtonGroup-->
-    <!--Racchiudere le classi Icon tra span-->
-    <div class="btn-group" id="groups">
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-    </div>
-
+    <!--Sezione SCRIPTS-->
 
     <script src="scripts/catalogue.js"></script>
     <script src="scripts/Calculations.js"></script>
@@ -173,10 +149,8 @@
 
         $(document).ready(function () {
             var currentProduct;
-            var linkedProduct; // ho aggiunto una prop di collegamento all'elemento dell'array [VEDI CATALOGUE.JS]
-
+            var linkedProduct;
             var currentRow;
-
 
             HideSpecificFields();
             PopulateDropDown();
@@ -198,62 +172,21 @@
                 }
 
 
-                currentProduct = $(this); // questo è il LINK cliccato, spero
-
-                // se il collegamento funziona, posso ricavarlo in altro modo e dunque togliere questa istruzione
+                currentProduct = $(this); // questo è il LINK cliccato
                 SetUnitPrice(currentProduct);
-
+                
                 linkedProduct = $(this).prop('linkedProduct');
+
             })
-
-            //$(".up").click(function (event) {
-            //    currentRow = $(this).parents("tr").get(0);
-               
-            //});
-            
-
-                //if (currentRow === $("tr:first") ) {
-                //    alert("Non è possibile spostare la prima riga");
-                //    return;
-                //} else {
-                //    // sposta
-                //}
-            
-
-            //$(".btn-group").find(".down").click(function (event) {
-            //    //alert("Hai cliccato GIU");
-            //    currentRow = $(this).parents("tr");
-            //    if (currentRow === $("tr:last")) {
-            //        alert("Non è possibile spostare l'ultima riga");
-            //        return;
-            //    } else {
-            //        // sposta
-            //    }
-
-            //})
-
-            //$(".btn-group").find(".edit").click(function (event) {
-            //    // logica del modifica
-            //    currentRow = $(this).parents("tr");
-
-            //})
-
-            //$(".btn-group").find(".remove").click(function (event) {
-            //    // logica del rimuovi
-            //    currentRow = $(this).parents("tr");
-
-            //})
 
 
             $("#add").click(function (event) {
                 var addedItem = AddToQuotation(linkedProduct);
+
+                // Il metodo AddRow non viene chiamato, $.each non restituisce esattamente le proprietà del mio oggetto
                 //AddRow(addedItem);
             })
 
-
-            //$(".specific").find("input:number").keyup(function () {
-            //    CalculateQuotation(currentProduct);
-            //})
 
             $(":input").on('keyup mouseup', function () {
                 CalculateQuotation(currentProduct);
@@ -263,25 +196,11 @@
                 $(":input").val("");
             })
 
-            //$("#discount").keyup(function () {
-            //    CalculateQuotation(currentProduct);
-            //})
-
-
-
-            // DA RIVEDERE
-            $('.quotation-row').hover(function () {
-                $('#groups').show();
-            }, function () {
-                    $('#groups').hide();
-                })
         })
 
         function HideSpecificFields() {
             $("#prova").find(".specific").hide();
         }
-
-
 
     </script>
 </body>
