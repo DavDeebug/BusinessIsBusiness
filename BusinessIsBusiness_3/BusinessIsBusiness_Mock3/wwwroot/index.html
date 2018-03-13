@@ -70,65 +70,79 @@
 
                         <!--Volume-->
                         <div class="specific" id="volume">
-                            <div class="form-group">
-                                <label class="control-label">Lunghezza (metri)</label>
-                                <input type="number" min="0" class="form-control" name="volumeLength" id="volumeLength" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Altezza (metri)</label>
-                                <input type="number" min="0" class="form-control" name="volumeHeight" id="volumeHeight" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Profondità (metri)</label>
-                                <input type="number" min="0" class="form-control" name="volumeWidth" id="volumeWidth" required />
+                            <div class="form-group row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Lunghezza (metri)</label>
+                                    <input type="number" min="0" class="form-control" name="volumeLength" id="volumeLength" required />
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label">Altezza (metri)</label>
+                                    <input type="number" min="0" class="form-control" name="volumeHeight" id="volumeHeight" required />
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label">Profondità (metri)</label>
+                                    <input type="number" min="0" class="form-control" name="volumeWidth" id="volumeWidth" required />
+                                </div>
+
                             </div>
                         </div>
 
                         <!--Area-->
                         <div class="specific" id="area">
-                            <div class="form-group">
-                                <label class="control-label">Lunghezza (metri)</label>
-                                <input type="number" class="form-control" name="areaLength" id="areaLength" required />
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Lunghezza (metri)</label>
+                                    <input type="number" class="form-control" name="areaLength" id="areaLength" required />
+                                </div>
+                            <div class="col-xs-4">
                                 <label class="control-label">Altezza (metri)</label>
                                 <input type="number" min="0" class="form-control" name="areaHeight" id="areaHeight" required />
                             </div>
                         </div>
+                            </div>
 
                         <!--Pezzo-->
                         <div class="specific" id="pezzo">
-                            <div class="form-group">
-                                <label class="control-label">Unità</label>
-                                <input type="number" min="0" class="form-control" name="unitQuantity" id="quantity" required />
+                            <div class="form-group row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Unità</label>
+                                    <input type="number" min="0" class="form-control" name="unitQuantity" id="quantity" required />
+                                </div>
                             </div>
                         </div>
 
                         <!--Campi calcolati comuni-->
                         <div class="commonFields">
                             <hr />
-                            <div class="form-group">
-                                <label>Quantità totale</label>
-                                <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" readonly />
+                            <div class="form-group row">
+                                <div class="col-xs-4">
+                                    <label>Quantità totale</label>
+                                    <input type="number" class="form-control" name="totalQuantity" id="totalQuantity" readonly />
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Prezzo unitario &euro;</label>
+                                    <input type="number" class="form-control" name="unitPrice" id="unitPrice" readonly />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Prezzo unitario &euro;</label>
-                                <input type="number" class="form-control" name="unitPrice" id="unitPrice" readonly />
+
+                            <div class="form-group row">
+
+                                <div class="col-xs-4">
+                                    <label>Prezzo totale &euro;</label>
+                                    <input type="number" class="form-control" name="totalPrice" id="totalPrice" readonly />
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Sconto (%)</label>
+                                    <input type="number" class="form-control" name="discount" id="discount"
+                                           min="0" max="100" value="" />
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Prezzo finale &euro;</label>
+                                    <input type="number" class="form-control" name="finalPrice" id="finalPrice" readonly />
+                                </div>
+
                             </div>
-                            <div class="form-group">
-                                <label>Prezzo totale &euro;</label>
-                                <input type="number" class="form-control" name="totalPrice" id="totalPrice" readonly />
                             </div>
-                            <div class="form-group">
-                                <label>Sconto(%)</label>
-                                <input type="number" class="form-control" name="discount" id="discount"
-                                       min="0" max="100" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label>Prezzo finale &euro;</label>
-                                <input type="number" class="form-control" name="finalPrice" id="finalPrice" readonly />
-                            </div>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
