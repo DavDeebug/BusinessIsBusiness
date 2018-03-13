@@ -34,28 +34,28 @@ function GetTotalQuantity(productType) {
 }
 
 function GetTotalPrice(price, quantity) {
-    var tp = price * quantity;
+    var tp = +((price * quantity).toFixed(2));
     $("#totalPrice").val(tp);
-    return +tp;
+    return +(tp.toFixed(2));
 }
 
 function GetQuotationPrice(total, discountPercentage) {
-    var fp = total - (total * discountPercentage / 100);
+    var fp = +((total - (total * discountPercentage / 100)).toFixed(2));
     $("#finalPrice").val(fp);
-    return +fp;
+    return +(fp.toFixed(2));
 }
 
 function getVolumeValue() {
     var l = $("#volumeLength").val();
     var h = $("#volumeHeight").val();
     var w = $("#volumeWidth").val();
-    return l * h * w;
+    return +((l * h * w).toFixed(2));
 }
 
 function getAreaValue() {
     var l = $("#areaLength").val();
     var h = $("#areaHeight").val();
-    return l * h;
+    return +((l * h).toFixed(2));
 }
 
 function getAmount() {

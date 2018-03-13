@@ -94,19 +94,19 @@
                                     <label class="control-label">Lunghezza (metri)</label>
                                     <input type="number" class="form-control" name="areaLength" id="areaLength" required />
                                 </div>
-                            <div class="col-xs-4">
-                                <label class="control-label">Altezza (metri)</label>
-                                <input type="number" min="0" class="form-control" name="areaHeight" id="areaHeight" required />
+                                <div class="col-xs-4">
+                                    <label class="control-label">Altezza (metri)</label>
+                                    <input type="number" min="0" class="form-control" name="areaHeight" id="areaHeight" required />
+                                </div>
                             </div>
                         </div>
-                            </div>
 
                         <!--Pezzo-->
                         <div class="specific" id="pezzo">
                             <div class="form-group row">
                                 <div class="col-xs-4">
                                     <label class="control-label">Unità</label>
-                                    <input type="number" min="0" class="form-control" name="unitQuantity" id="quantity" required />
+                                    <input type="number" min="0" step="1" class="form-control" name="unitQuantity" id="quantity" required />
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                 </div>
 
                             </div>
-                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -188,7 +188,7 @@
 
                 currentProduct = $(this); // questo è il LINK cliccato
                 SetUnitPrice(currentProduct);
-                
+
                 linkedProduct = $(this).prop('linkedProduct');
 
             })
