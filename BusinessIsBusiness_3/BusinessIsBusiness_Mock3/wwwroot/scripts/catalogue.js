@@ -13,10 +13,10 @@ Product.prototype.getUnitPrice = function () {
 
 
 var volumeProducts = [
-    new Product("Sabbia lavata", 0.0279),
-    new Product("Sabbia asciutta", 0.0408),
-    new Product("Miscela di ghiaia",0.0287),
-    new Product("Misto cementato", 0.0391)
+    new Product("Sabbia lavata", 27.90),
+    new Product("Sabbia asciutta", 40.80),
+    new Product("Miscela di ghiaia",28.70),
+    new Product("Misto cementato", 39.10)
 ]
 
 var areaProducts = [
