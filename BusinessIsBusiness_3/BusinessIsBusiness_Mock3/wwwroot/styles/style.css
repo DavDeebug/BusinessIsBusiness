@@ -8,6 +8,10 @@
 }
 
 .myMargin {
-
     margin-bottom: 20px;
+}
+
+.total {
+    font-size: 16px;
+    font-family:'Bookman Old Style';
 }

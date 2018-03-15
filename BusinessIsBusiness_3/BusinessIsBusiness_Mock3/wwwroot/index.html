@@ -9,16 +9,13 @@
     <link href="styles/style.css" rel="stylesheet" />
 </head>
 <body>
-    <!--TODO: implementare la funzionalità di modifica record-->
-    <!--TODO: sistemare con il discorso righe e colonne nella table dentro il panel-body-->
-    <!--TODO: sistemare righe e colonne allineate dentro il form -->
+    <!--TODO: implementare la funzionalità di modifica record (NON RIUSCITO)-->
 
     <h1 class="myMargin">Busine$$ is Busine$$</h1>
 
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Prodotti, clienti e dropdown
                 <div class="dropdown">
                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-plus-sign"></span>
@@ -50,7 +47,9 @@
             </div>
 
             <div class="panel-footer">
-                Qua metto il totale: <span class="text-right">A destra</span>
+                <span class="total text-right">Totale: &euro; </span>
+                <span id="tot" class="total text-right"></span>
+
             </div>
         </div>
     </div>
@@ -154,6 +153,7 @@
         </div>
     </div>
 
+
     <!--Sezione SCRIPTS-->
 
     <script src="scripts/catalogue.js"></script>
@@ -165,9 +165,7 @@
         $(document).ready(function () {
             var currentProduct;
             var linkedProduct;
-            //var currentRow;
 
-            //HideSpecificFields();
             PopulateDropDown();
 
             $(".dropdown-menu").find("a").click(function (event) {
@@ -197,11 +195,7 @@
 
 
             $("#add").click(function (event) {
-                //var addedItem =
                     AddToQuotation(linkedProduct);
-
-                // Il metodo AddRow non viene chiamato, $.each non restituisce esattamente le proprietà del mio oggetto
-                //AddRow(addedItem);
             })
 
 

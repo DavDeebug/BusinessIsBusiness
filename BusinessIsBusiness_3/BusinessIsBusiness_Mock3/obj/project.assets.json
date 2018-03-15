@@ -12544,11 +12544,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Davide Corrain\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
+      "projectUniqueName": "C:\\Users\\Davide Corrain\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
       "projectName": "BusinessIsBusiness_Mock3",
-      "projectPath": "C:\\Users\\Davide Corrain\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
+      "projectPath": "C:\\Users\\Davide Corrain\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\BusinessIsBusiness_Mock3.csproj",
       "packagesPath": "C:\\Users\\Davide Corrain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Davide Corrain\\Source\\Repos\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\obj\\",
+      "outputPath": "C:\\Users\\Davide Corrain\\BusinessIsBusiness\\BusinessIsBusiness_3\\BusinessIsBusiness_Mock3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -26,6 +26,7 @@ function AddToQuotation(customizedProduct) {
     var newItem = new Record(recordId, name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
     quotationItems.push(newItem);
     CreateGraphicRow();
+    getQuotationAmount();
 
     function CreateGraphicRow() {
         var content = $("tbody");
@@ -94,6 +95,7 @@ function AddToQuotation(customizedProduct) {
         }
 
         currentRow.remove();
+        getQuotationAmount();
     });
 
     function MoveUpRow(row) {
@@ -116,23 +118,14 @@ function AddToQuotation(customizedProduct) {
         placeholder.replaceWith(next);
     }
 
+    function getQuotationAmount() {
+        var result = 0;
+        var partialTotals = quotationItems.map(function (x) { return x.finalPrice });
+
+        for (var i = 0; i < partialTotals.length; i++) {
+            result = +result + +partialTotals[i];
+        }
+        $("#tot").text(result);
+    }
 
 }
-
-// per ricavare le proprietà e "disegnare" la riga del preventivo
-// avrei iterato sul mio oggetto 'record' nel seguente modo:
-// però mi aggiungeva delle colonne in più:
-
-
-//function AddRow(item) {
-//    var content = $("tbody");
-
-//    var row = $("<tr/>")
-//        .appendTo(content);
-
-//    $.each(item, function (i) {
-//        var definition = $("<td/>")
-//            .text(item[i])
-//            .appendTo(row);
-//    });
-//};
