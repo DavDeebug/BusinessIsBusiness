@@ -165,7 +165,7 @@
         $(document).ready(function () {
             var currentProduct;
             var linkedProduct;
-            var currentRow;
+            //var currentRow;
 
             //HideSpecificFields();
             PopulateDropDown();
@@ -191,12 +191,14 @@
                 SetUnitPrice(currentProduct);
 
                 linkedProduct = $(this).prop('linkedProduct');
+                
 
             })
 
 
             $("#add").click(function (event) {
-                var addedItem = AddToQuotation(linkedProduct);
+                //var addedItem =
+                    AddToQuotation(linkedProduct);
 
                 // Il metodo AddRow non viene chiamato, $.each non restituisce esattamente le proprietà del mio oggetto
                 //AddRow(addedItem);
@@ -204,7 +206,7 @@
 
 
             $(":input").on('keyup mouseup', function () {
-                CalculateQuotation(currentProduct);
+                CalculateQuotation(currentProduct); // link in ingresso
             })
 
             $('#prova').on('hidden.bs.modal', function () {

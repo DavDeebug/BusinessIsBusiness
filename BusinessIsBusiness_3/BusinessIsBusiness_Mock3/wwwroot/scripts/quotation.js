@@ -1,7 +1,6 @@
 ﻿var quotationItems = [];
 var counter = 0;
 
-
 function Record(id, name, up, qty, tp, discount, fp) {
     Product.call(this, name, up);
     this.id = id;
@@ -47,12 +46,12 @@ function AddToQuotation(customizedProduct) {
                 <div class="btn-group" id="groups">
                     <button type="button" class="btn btn-default up"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
                     <button type="button" class="btn btn-default down"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
-                    <button type="button" class="btn btn-default edit"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-default edit" data-toggle="modal" data-target="#prova"><span class="glyphicon glyphicon-edit"></span></button>
                     <button type="button" class="btn btn-default remove"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
                </td>`)
             .appendTo(row);
-}
+    }
 
 
     $("tbody").find("tr:last .up").click(function (event) {
@@ -81,6 +80,8 @@ function AddToQuotation(customizedProduct) {
     $(".edit").click(function (event) {
         currentRow = $(this).closest("tr");
         // TODO
+        $("#add").hide();
+        $("#modify").show();
 
     });
 
