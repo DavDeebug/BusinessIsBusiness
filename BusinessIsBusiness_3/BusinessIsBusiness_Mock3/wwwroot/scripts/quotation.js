@@ -1,5 +1,6 @@
 ﻿var quotationItems = [];
 var counter = 0;
+var currentRow;
 
 function Record(id, name, up, qty, tp, discount, fp) {
     Product.call(this, name, up);
@@ -61,6 +62,7 @@ function CreateGraphicRow(itemObj) { // a questa funzione ora passo un oggetto d
     var row = $("<tr></tr>")
         .addClass('quotation-row')
         .attr('id', `${itemObj.id}`)
+        .attr('productType', `${itemObj.productType}`)
         .appendTo(content);
 
     var definitions = row
@@ -96,12 +98,12 @@ function getQuotationAmount() {
     for (var i = 0; i < partialTotals.length; i++) {
         result = +result + +partialTotals[i];
     }
-    $("#tot").text(result);
+    $("#tot").text(result.toFixed(2));
 }
 
 function RowEvents() {
     $("tbody").find("tr:last .up").click(function (event) {
-        var currentRow = $(this).closest("tr");
+        currentRow = $(this).closest("tr");
         var firstRowId = $(this).parents("tbody").find('tr:first').attr('id');
 
         if (currentRow.attr("id") === firstRowId) {
@@ -112,7 +114,7 @@ function RowEvents() {
     });
 
     $("tbody").find("tr:last .down").click(function (event) {
-        var currentRow = $(this).closest("tr");
+        currentRow = $(this).closest("tr");
         var lastRowId = $(this).parents("tbody").find('tr:last').attr('id');
 
         if (currentRow.attr("id") === lastRowId) {
@@ -124,14 +126,48 @@ function RowEvents() {
 
     $("tbody").find("tr:last .edit").click(function (event) {
         currentRow = $(this).closest("tr");
-        // TODO
+        // trovo l'item corrispondente al record
+        var itemIndex = quotationItems.map(function (x) { return x.id }).indexOf(currentRow.attr('id'));
+        var currentRecord = quotationItems[itemIndex];
+        // in base al tipo di prodotto, visualizzo ancora una volta il modal
+        switch (currentRecord["productType"]) {
+            case "area":
+                $("#prova").find("#area").show();
+                break;
+            case "volume":
+                $("#prova").find("#volume").show();
+                break;
+            case "pezzo":
+                $("#prova").find("#pezzo").show();
+                break;
+        }
+
+
+        // ho cliccato edit:
+        // il tasto add, che solitamente aggiunge un nuovo record, non deve essere disponibile
         $("#add").hide();
+        // il tasto modify, che dovrà modificare un certo record quando cliccato, deve essere disponibile
         $("#modify").show();
+
+        // riempio il model
+        $("#unitPrice").val(currentRecord["UnitPrice"]);
+        $("#volumeLength").val(currentRecord["volumeLength"]);
+        $("#volumeHeight").val(currentRecord["volumeHeight"]);
+        $("#volumeWidth").val(currentRecord["volumeWidth"]);
+        $("#areaLength").val(currentRecord["areaLength"]);
+        $("#areaHeight").val(currentRecord["areaHeight"]);
+        $("#quantity").val(currentRecord["units"]);
+
+        $("#totalQuantity").val(currentRecord["quantity"]);
+        $("#totalPrice").val(currentRecord["totalPrice"]);
+        $("#discount").val(currentRecord["discountPercentage"]);
+        $("#finalPrice").val(currentRecord["finalPrice"]);
+
 
     });
 
     $("tbody").find("tr:last .remove").click(function (event) {
-        var currentRow = $(this).closest("tr");
+        currentRow = $(this).closest("tr");
         var itemIndex = quotationItems.map(function (x) { return x.id }).indexOf(currentRow.attr('id'));
 
         if (itemIndex > -1) {

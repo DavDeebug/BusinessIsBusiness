@@ -198,6 +198,13 @@
                 AddToQuotation(linkedProduct);
             })
 
+            $("#modify").click(function (event) {
+                // chiama una funzione che aggiorna un mio item salvato
+                
+                // e abilita nuovamente l'OK
+                $("#add").show();
+            })
+
 
             $(":input").on('keyup mouseup', function () {
                 CalculateQuotation(currentProduct); // link in ingresso
@@ -205,6 +212,7 @@
 
             $('#prova').on('hidden.bs.modal', function () {
                 $(":input").val("");
+                HideSpecificFields();
             })
 
         })
