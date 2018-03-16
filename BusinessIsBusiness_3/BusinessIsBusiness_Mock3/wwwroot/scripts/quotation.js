@@ -2,6 +2,8 @@
 var counter = 0;
 var currentRow;
 
+var modifyAttempt = false;
+
 function Record(id, name, up, qty, tp, discount, fp) {
     Product.call(this, name, up);
     this.id = id;
@@ -163,8 +165,14 @@ function RowEvents() {
         $("#discount").val(currentRecord["discountPercentage"]);
         $("#finalPrice").val(currentRecord["finalPrice"]);
 
-        // alla fine della modifica, l'OK va ripristinato
-        //$("#add").show();
+        // se sto modificando un item, avrò bisogno di premere Modifica
+        // il click su Modifica imposta a true il flag modifyAttempt
+        // quando è true, procedo a modificare effettivamente il record
+        // quando la modifica è completata, reimposto il flag a false
+        if (modifyAttempt == true){
+            UpdateItem(currentRecord);
+            modifyAttempt = false;
+        }
 
     });
 
@@ -202,5 +210,34 @@ function RowEvents() {
 
     function UpdateItem(itemObj) {
         
+        // leggo i valori  dalle textbox
+        var inputQuantity = $("#totalQuantity").val();
+        var inputTotalPrice = $("#totalPrice").val();
+        var inputDiscountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val();
+        var inputFinalPrice = $("#finalPrice").val();
+        var volumeLength = $("#volumeLength").val();
+        var volumeHeight = $("#volumeHeight").val();
+        var volumeWidth = $("#volumeWidth").val();
+
+        var areaLength = $("#areaLength").val();
+        var areaHeight = $("#areaHeight").val();
+
+        var units = $("#quantity").val();
+
+        itemObj["quantity"] = inputQuantity;
+        itemObj["totalPrice"] = inputTotalPrice;
+        itemObj["discountPercentage"] = inputDiscountPercentage;
+        itemObj["finalPrice"] = inputFinalPrice;
+        itemObj["volumeLength"] = volumeLength;
+        itemObj["volumeHeight"] = volumeHeight;
+        itemObj["volumeWidth"] = volumeWidth;
+        itemObj["areaLength"] = areaLength;
+        itemObj["areaHeight"] = areaHeight;
+        itemObj["units"] = units;
+
+        CreateGraphicRow(itemObj);
+
+        
+
     }
 }
