@@ -8,41 +8,56 @@ function Record(id, name, up, qty, tp, discount, fp) {
     this.totalPrice = tp;
     this.discountPercentage = discount;
     this.finalPrice = fp;
+
+    this.productType = productType; // ora un record conserva un riferimento sul tipo di prodotto
+
+    //next step: salvo qualsiasi cosa input nel record
 }
 
 Record.prototype = Object.create(Product.prototype);
 
 function AddToQuotation(customizedProduct) {
-
+    // aggiorno il contatore
     var recordId = 'rec' + counter++;
+
+    // dal prodotto personalizzato, ricavo nome e prezzo BASE (PRODUCT)
     var name = customizedProduct.getProductName();
     var price = customizedProduct.getUnitPrice();
 
+    // leggo i valori calcolati dalle textbox
     var inputQuantity = $("#totalQuantity").val();
     var inputTotalPrice = $("#totalPrice").val();
     var inputDiscountPercentage = ($("#discount").val() == "") ? 0 : $("#discount").val();
     var inputFinalPrice = $("#finalPrice").val();
 
+    // creo un nuovo record con i valori ricavati sopra
     var newItem = new Record(recordId, name, price, inputQuantity, inputTotalPrice, inputDiscountPercentage, inputFinalPrice);
+
+    // l'oggetto creato lo piazzo in array
     quotationItems.push(newItem);
-    CreateGraphicRow();
+
+    // demando la creazione di una riga
+    CreateGraphicRow(newItem);
+
+    // chiamo la funzione che aggiorna il totale
     getQuotationAmount();
+}
 
-    function CreateGraphicRow() {
-        var content = $("tbody");
+function CreateGraphicRow(itemObj) { // a questa funzione ora passo un oggetto di array, dal quale estrarre le informazioni per la riga
+    var content = $("tbody");
 
-        var row = $("<tr></tr>")
-            .addClass('quotation-row')
-            .attr('id', `${recordId}`)
-            .appendTo(content);
+    var row = $("<tr></tr>")
+        .addClass('quotation-row')
+        .attr('id', `${itemObj.id}`)
+        .appendTo(content);
 
-        var definitions = row
-            .html(`<td>${name}</td>
-               <td>${price}</td>
-               <td>${inputQuantity}</td>
-               <td>${inputTotalPrice}</td>
-               <td>${inputDiscountPercentage}</td>
-               <td>${inputFinalPrice}</td>
+    var definitions = row
+        .html(`<td>${itemObj.getProductName()}</td>
+               <td>${itemObj.getUnitPrice()}</td>
+               <td>${itemObj.quantity}</td>
+               <td>${itemObj.totalPrice}</td>
+               <td>${itemObj.discountPercentage}</td>
+               <td>${itemObj.finalPrice}</td>
                <td>
                 <div class="btn-group" id="groups">
                     <button type="button" class="btn btn-default up"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
@@ -51,20 +66,39 @@ function AddToQuotation(customizedProduct) {
                     <button type="button" class="btn btn-default remove"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
                </td>`)
-            .appendTo(row);
+        .appendTo(row);
+
+    // una volta che ho una riga, posso gestirne i pulsanti cablati:
+    RowEvents();
+}
+
+
+
+
+
+
+function getQuotationAmount() {
+    var result = 0;
+    var partialTotals = quotationItems.map(function (x) { return x.finalPrice });
+
+    for (var i = 0; i < partialTotals.length; i++) {
+        result = +result + +partialTotals[i];
     }
+    $("#tot").text(result);
+}
 
-
+function RowEvents() {
     $("tbody").find("tr:last .up").click(function (event) {
         var currentRow = $(this).closest("tr");
         var firstRowId = $(this).parents("tbody").find('tr:first').attr('id');
 
-        if (currentRow.attr("id") === firstRowId){
+        if (currentRow.attr("id") === firstRowId) {
             alert("Non è possibile spostare più in alto la prima riga!")
         } else {
             MoveUpRow(currentRow);
         }
     });
+
     $("tbody").find("tr:last .down").click(function (event) {
         var currentRow = $(this).closest("tr");
         var lastRowId = $(this).parents("tbody").find('tr:last').attr('id');
@@ -76,9 +110,7 @@ function AddToQuotation(customizedProduct) {
         }
     });
 
-
-
-    $(".edit").click(function (event) {
+    $("tbody").find("tr:last .edit").click(function (event) {
         currentRow = $(this).closest("tr");
         // TODO
         $("#add").hide();
@@ -95,7 +127,7 @@ function AddToQuotation(customizedProduct) {
         }
 
         currentRow.remove();
-        getQuotationAmount();
+        getQuotationAmount(); // il totale si aggiorna anche quando una riga viene rimossa
     });
 
     function MoveUpRow(row) {
@@ -116,16 +148,6 @@ function AddToQuotation(customizedProduct) {
 
         next.after(current);
         placeholder.replaceWith(next);
-    }
-
-    function getQuotationAmount() {
-        var result = 0;
-        var partialTotals = quotationItems.map(function (x) { return x.finalPrice });
-
-        for (var i = 0; i < partialTotals.length; i++) {
-            result = +result + +partialTotals[i];
-        }
-        $("#tot").text(result);
     }
 
 }

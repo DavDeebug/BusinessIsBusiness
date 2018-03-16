@@ -53,3 +53,14 @@ C:\Users\Davide Corrain\Source\Repos\BusinessIsBusiness\BusinessIsBusiness_3\Bus
 C:\Users\Davide Corrain\Source\Repos\BusinessIsBusiness\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.AssemblyInfo.cs
 C:\Users\Davide Corrain\Source\Repos\BusinessIsBusiness\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.dll
 C:\Users\Davide Corrain\Source\Repos\BusinessIsBusiness\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.pdb
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\bin\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.deps.json
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\bin\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.runtimeconfig.json
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\bin\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.runtimeconfig.dev.json
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\bin\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.dll
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\bin\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.pdb
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.csprojResolveAssemblyReference.cache
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.csproj.CoreCompileInputs.cache
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.AssemblyInfoInputs.cache
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.AssemblyInfo.cs
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.dll
+C:\Users\Davide Corrain\Desktop\BusinessIsBusiness12\BusinessIsBusiness_3\BusinessIsBusiness_Mock3\obj\Debug\netcoreapp2.0\BusinessIsBusiness_Mock3.pdb
