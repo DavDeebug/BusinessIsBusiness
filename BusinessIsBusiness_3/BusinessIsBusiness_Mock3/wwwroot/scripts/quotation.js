@@ -12,6 +12,18 @@ function Record(id, name, up, qty, tp, discount, fp) {
     this.productType = productType; // ora un record conserva un riferimento sul tipo di prodotto
 
     //next step: salvo qualsiasi cosa input nel record
+    // ogni volta che si genera un record, prende i valori specifici dalle textbox
+    // le textbox che non sono visualizzate, non sono compilate
+    // ne consegue che il record avrà determinati campi "".
+    this.volumeLength = $("#volumeLength").val();
+    this.volumeHeight = $("#volumeHeight").val();
+    this.volumeWidth = $("#volumeWidth").val();
+
+    this.areaLength = $("#areaLength").val();
+    this.areaHeight = $("#areaHeight").val();
+
+    this.units = $("#quantity").val();
+
 }
 
 Record.prototype = Object.create(Product.prototype);
