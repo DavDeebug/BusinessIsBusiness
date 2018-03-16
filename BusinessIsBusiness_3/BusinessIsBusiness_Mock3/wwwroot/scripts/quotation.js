@@ -163,6 +163,8 @@ function RowEvents() {
         $("#discount").val(currentRecord["discountPercentage"]);
         $("#finalPrice").val(currentRecord["finalPrice"]);
 
+        // alla fine della modifica, l'OK va ripristinato
+        //$("#add").show();
 
     });
 
@@ -198,4 +200,7 @@ function RowEvents() {
         placeholder.replaceWith(next);
     }
 
+    function UpdateItem(itemObj) {
+        
+    }
 }
